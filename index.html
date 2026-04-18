@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AAS Portal — Team Manual · ISPE 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f8f8f6;color:#1a1a18;line-height:1.6}
+.cover{background:#1a1a18;color:#fff;padding:40px 24px 36px;position:relative;overflow:hidden}
+.cover::after{content:'AAS';position:absolute;right:-20px;top:-20px;font-size:180px;font-weight:900;color:#ffffff08;pointer-events:none;line-height:1}
+.cover-pill{display:inline-block;font-size:10px;font-weight:700;background:#378add22;color:#85b7eb;border:1px solid #378add44;padding:3px 10px;border-radius:4px;margin-bottom:14px;letter-spacing:.08em}
+.cover h1{font-size:22px;font-weight:800;line-height:1.25;margin-bottom:8px}
+.cover p{font-size:12px;color:#888780;max-width:400px}
+.cover-meta{margin-top:20px;display:flex;gap:16px;flex-wrap:wrap}
+.cover-meta-item{font-size:11px;color:#73726c}
+.cover-meta-item strong{color:#d3d1c7;font-weight:600;display:block;font-size:13px}
+
+.wrap{max-width:680px;margin:0 auto;padding:0 16px 60px}
+
+.toc{background:#fff;border:1px solid #e5e4de;border-radius:12px;padding:20px 20px 14px;margin:20px 0}
+.toc-title{font-size:10px;font-weight:700;color:#73726c;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+.toc-item{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid #f1efe8;text-decoration:none;color:#1a1a18;transition:color .15s}
+.toc-item:last-child{border-bottom:none}
+.toc-item:hover{color:#378add}
+.toc-num{font-size:10px;font-weight:700;color:#b4b2a9;width:18px;flex-shrink:0}
+.toc-label{font-size:13px;font-weight:500}
+.toc-sub{font-size:11px;color:#73726c;margin-left:auto}
+
+.section{margin-top:28px}
+.sec-anchor{display:block;height:0;visibility:hidden}
+.sec-header{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px}
+.sec-num{width:32px;height:32px;border-radius:8px;background:#1a1a18;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.sec-title{font-size:18px;font-weight:700;color:#1a1a18;margin-bottom:2px}
+.sec-desc{font-size:12px;color:#73726c}
+
+.card{background:#fff;border:1px solid #e5e4de;border-radius:10px;padding:14px 16px;margin-bottom:10px}
+.card-warn{background:#faeeda;border-color:#fac775}
+.card-info{background:#e6f1fb;border-color:#b5d4f4}
+.card-success{background:#eaf3de;border-color:#c0dd97}
+.card-purple{background:#eeedfe;border-color:#afa9ec}
+.card-dark{background:#1a1a18;border-color:#1a1a18;color:#fff}
+
+.label{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#73726c;margin-bottom:6px}
+.label-purple{color:#534ab7}
+.label-green{color:#3b6d11}
+.label-blue{color:#185fa5}
+.label-amber{color:#854f0b}
+
+.tab-grid{display:grid;grid-template-columns:1fr;gap:8px}
+.tab-card{background:#fff;border:1px solid #e5e4de;border-radius:10px;overflow:hidden}
+.tab-card-header{background:#f1efe8;padding:10px 14px;border-bottom:1px solid #e5e4de;display:flex;align-items:center;gap:10px}
+.tab-icon{font-size:16px;flex-shrink:0}
+.tab-name{font-size:13px;font-weight:700;color:#1a1a18}
+.tab-purpose{font-size:11px;color:#73726c}
+.tab-card-body{padding:12px 14px}
+.tab-card-body p{font-size:12px;color:#5f5e5a;line-height:1.6;margin-bottom:8px}
+.tab-card-body p:last-child{margin-bottom:0}
+
+.step-list{list-style:none;padding:0}
+.step-item{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #f1efe8}
+.step-item:last-child{border-bottom:none}
+.step-dot{width:22px;height:22px;border-radius:50%;background:#1a1a18;color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.step-content{flex:1}
+.step-title{font-size:13px;font-weight:600;color:#1a1a18;margin-bottom:2px}
+.step-detail{font-size:12px;color:#73726c;line-height:1.5}
+.step-tag{display:inline-block;font-size:10px;font-weight:600;padding:2px 7px;border-radius:3px;margin-top:5px;background:#f1efe8;color:#5f5e5a}
+.step-tag.blue{background:#e6f1fb;color:#185fa5}
+.step-tag.green{background:#eaf3de;color:#3b6d11}
+.step-tag.amber{background:#faeeda;color:#854f0b}
+.step-tag.purple{background:#eeedfe;color:#534ab7}
+
+.pitch-block{background:#1a1a18;border-radius:10px;padding:16px 18px;margin:10px 0}
+.pitch-label{font-size:10px;font-weight:700;color:#73726c;letter-spacing:.07em;text-transform:uppercase;margin-bottom:8px}
+.pitch-text{font-size:13px;color:#d3d1c7;line-height:1.7;font-style:italic}
+.pitch-text strong{color:#fff;font-style:normal}
+
+.qa-list{list-style:none;padding:0}
+.qa-item{padding:12px 0;border-bottom:1px solid #f1efe8}
+.qa-item:last-child{border-bottom:none}
+.qa-q{font-size:13px;font-weight:600;color:#1a1a18;margin-bottom:4px;display:flex;gap:8px}
+.qa-q::before{content:'Q';width:18px;height:18px;background:#e6f1fb;color:#185fa5;border-radius:4px;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.qa-a{font-size:12px;color:#5f5e5a;line-height:1.6;padding-left:26px}
+
+.alcoa-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.alcoa-item{background:#eaf3de;border:1px solid #c0dd97;border-radius:8px;padding:10px 12px}
+.alcoa-letter{font-size:16px;font-weight:800;color:#3b6d11;margin-bottom:2px}
+.alcoa-word{font-size:11px;font-weight:700;color:#1a1a18;margin-bottom:3px}
+.alcoa-how{font-size:11px;color:#444441;line-height:1.5}
+
+.metric-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.metric{background:#f1efe8;border-radius:8px;padding:10px;text-align:center}
+.metric-val{font-size:20px;font-weight:800;color:#1a1a18}
+.metric-val.red{color:#a32d2d}
+.metric-val.green{color:#3b6d11}
+.metric-lbl{font-size:10px;color:#73726c;margin-top:2px}
+
+.role-table{width:100%;border-collapse:collapse;font-size:11px;border:1px solid #e5e4de;border-radius:8px;overflow:hidden}
+.role-table th{background:#f1efe8;padding:7px 10px;font-size:10px;font-weight:700;text-align:left;border-bottom:1px solid #e5e4de;color:#5f5e5a;letter-spacing:.04em}
+.role-table td{padding:7px 10px;border-bottom:1px solid #f1efe8;color:#1a1a18;vertical-align:top}
+.role-table tr:last-child td{border-bottom:none}
+.badge{display:inline-block;font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px}
+.badge-write{background:#eaf3de;color:#3b6d11}
+.badge-read{background:#e6f1fb;color:#185fa5}
+.badge-none{background:#f1efe8;color:#b4b2a9}
+.badge-admin{background:#faeeda;color:#854f0b}
+
+.roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}
+.rq{background:#f1efe8;border-radius:8px;padding:10px 10px}
+.rq-label{font-size:10px;font-weight:700;color:#73726c;margin-bottom:4px}
+.rq-title{font-size:12px;font-weight:700;color:#1a1a18;margin-bottom:6px}
+.rq-items{font-size:10px;color:#73726c;line-height:1.6}
+
+.divider{height:1px;background:#e5e4de;margin:28px 0}
+
+.footer{text-align:center;padding:20px 0;font-size:11px;color:#b4b2a9}
+
+@media(max-width:420px){
+  .alcoa-grid{grid-template-columns:1fr}
+  .metric-row{grid-template-columns:1fr 1fr}
+  .roadmap{grid-template-columns:1fr 1fr}
+  .cover h1{font-size:18px}
+}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="cover-pill">ISPE 2026 · Roche Track · Team Manual</div>
+  <h1>AAS Portal — Simulation Manual</h1>
+  <p>How to use, what to say, and what everything means. Share this with your team before the pitch.</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><strong>Simulation</strong>AAS_portal_v5.html</div>
+    <div class="cover-meta-item"><strong>Use case</strong>Basilmol DS · Rosemary → Kaiseraugst</div>
+    <div class="cover-meta-item"><strong>Standard</strong>IDTA Asset Administration Shell</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- TOC -->
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <a href="#s1" class="toc-item"><span class="toc-num">1</span><span class="toc-label">What this simulation is</span><span class="toc-sub">30 seconds</span></a>
+    <a href="#s2" class="toc-item"><span class="toc-num">2</span><span class="toc-label">The real-world problem it shows</span><span class="toc-sub">Know before you demo</span></a>
+    <a href="#s3" class="toc-item"><span class="toc-num">3</span><span class="toc-label">Tab-by-tab walkthrough</span><span class="toc-sub">7 tabs explained</span></a>
+    <a href="#s4" class="toc-item"><span class="toc-num">4</span><span class="toc-label">Running the Live Demo tab</span><span class="toc-sub">Step by step</span></a>
+    <a href="#s5" class="toc-item"><span class="toc-num">5</span><span class="toc-label">Key numbers to remember</span><span class="toc-sub">For Q&amp;A</span></a>
+    <a href="#s6" class="toc-item"><span class="toc-num">6</span><span class="toc-label">Compliance &amp; ALCOA+</span><span class="toc-sub">Your winning angle</span></a>
+    <a href="#s7" class="toc-item"><span class="toc-num">7</span><span class="toc-label">Who has access to what</span><span class="toc-sub">IAM &amp; Security tab</span></a>
+    <a href="#s8" class="toc-item"><span class="toc-num">8</span><span class="toc-label">Implementation roadmap</span><span class="toc-sub">4 quarters</span></a>
+    <a href="#s9" class="toc-item"><span class="toc-num">9</span><span class="toc-label">Judge Q&amp;A answers</span><span class="toc-sub">Ready-to-use</span></a>
+    <a href="#s10" class="toc-item"><span class="toc-num">10</span><span class="toc-label">Pitch scripts</span><span class="toc-sub">30s · 2min</span></a>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="section">
+    <span class="sec-anchor" id="s1"></span>
+    <div class="sec-header">
+      <div class="sec-num">1</div>
+      <div><div class="sec-title">What this simulation is</div><div class="sec-desc">Open AAS_portal_v5.html in any browser — no internet needed</div></div>
+    </div>
+    <div class="card">
+      <div class="label">In one sentence</div>
+      <p style="font-size:13px;color:#1a1a18;line-height:1.6;">This is a working interactive prototype of an <strong>Asset Administration Shell (AAS) data exchange</strong> between a CDMO supplier (Rosemary) and Roche's Kaiseraugst manufacturing site — applied to a drug substance called <strong>Basilmol DS</strong>.</p>
+    </div>
+    <div class="card card-info">
+      <div class="label label-blue">What it proves to judges</div>
+      <p style="font-size:12px;color:#185fa5;line-height:1.6;">"This isn't a diagram of what AAS could do — it's a functional simulation of what it <strong>does</strong> do, running live in your hands right now."</p>
+    </div>
+    <div class="card">
+      <div class="label">What it contains (7 tabs)</div>
+      <p style="font-size:12px;color:#73726c;line-height:1.6;">Problem · Live Demo · Forecast · IAM &amp; Security · Traceability · Who's This For · QA Review — each tab targets a different judge concern.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="section">
+    <span class="sec-anchor" id="s2"></span>
+    <div class="sec-header">
+      <div class="sec-num">2</div>
+      <div><div class="sec-title">The real-world problem it shows</div><div class="sec-desc">Understand this before you touch the demo</div></div>
+    </div>
+    <div class="metric-row">
+      <div class="metric"><div class="metric-val red">4–6w</div><div class="metric-lbl">Batch data cycle today</div></div>
+      <div class="metric"><div class="metric-val red">±18%</div><div class="metric-lbl">Forecast error rate</div></div>
+      <div class="metric"><div class="metric-val red">3–5</div><div class="metric-lbl">Manual handoffs / batch</div></div>
+    </div>
+    <div class="card">
+      <div class="label">The broken flow today</div>
+      <ul class="step-list">
+        <li class="step-item">
+          <div class="step-dot">1</div>
+          <div class="step-content"><div class="step-title">Rosemary manufactures Basilmol DS batch</div><div class="step-detail">Has all the data digitally — yield, potency, QC results.</div></div>
+        </li>
+        <li class="step-item">
+          <div class="step-dot">2</div>
+          <div class="step-content"><div class="step-title">Batch released as a PDF Certificate of Analysis (CoA)</div><div class="step-detail">Digital data becomes paper. The bottleneck starts here.</div></div>
+        </li>
+        <li class="step-item">
+          <div class="step-dot">3</div>
+          <div class="step-content"><div class="step-title">Roche QA manually reads, compares, and re-enters into QMS</div><div class="step-detail">Data integrity risk at every keystroke. Takes days.</div></div>
+        </li>
+        <li class="step-item">
+          <div class="step-dot">4</div>
+          <div class="step-content"><div class="step-title">Kaiseraugst sends demand forecast via email</div><div class="step-detail">Rosemary plans production on stale data. 1–2 week lag. No version control. No audit trail.</div></div>
+        </li>
+        <li class="step-item">
+          <div class="step-dot">5</div>
+          <div class="step-content"><div class="step-title">Result: delayed DP manufacturing → delayed patient access</div><div class="step-detail">Every manual step adds days. For a first-in-class molecule, this directly delays patients.</div></div>
+        </li>
+      </ul>
+    </div>
+    <div class="pitch-block">
+      <div class="pitch-label">Say this to frame the problem</div>
+      <div class="pitch-text">"Rosemary moves Basilmol DS from Stein to Kaiseraugst — but the <strong>data doesn't move with it</strong>. It gets trapped in PDF CoAs, re-keyed into QMS, and forecast updates arrive via email with a 1–2 week lag and no version control. That's 4–6 weeks of cycle time, ±18% forecast error, and 3–5 manual handoffs on every single batch. For a first-in-class molecule, that directly delays patient access."</div>
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="section">
+    <span class="sec-anchor" id="s3"></span>
+    <div class="sec-header">
+      <div class="sec-num">3</div>
+      <div><div class="sec-title">Tab-by-tab walkthrough</div><div class="sec-desc">What each tab shows and what to say</div></div>
+    </div>
+
+    <div class="tab-grid">
+      <div class="tab-card">
+        <div class="tab-card-header"><span class="tab-icon">📋</span><div><div class="tab-name">Problem</div><div class="tab-purpose">Tab 1 — Start here</div></div></div>
+        <div class="tab-card-body">
+          <p>Shows the broken supply chain flow: Rosemary → PDF CoA → Excel → Manual QMS → Kaiseraugst. Three critical failure points are listed: PDF CoA, Excel email forecast, no controlled sharing.</p>
+          <p><strong>Use it to:</strong> Frame the problem in the first 60 seconds of your pitch. Point to the flow diagram and the 3 failure points. End with the patient impact statement.</p>
+        </div>
+      </div>
+
+      <div class="tab-card">
+        <div class="tab-card-header"><span class="tab-icon">▶️</span><div><div class="tab-name">Live Demo</div><div class="tab-purpose">Tab 2 — The centrepiece</div></div></div>
+        <div class="tab-card-body">
+          <p>Animated, interactive simulation of a real AAS data exchange. Rosemary's MES writes a DS batch CoA directly to an AAS submodel. Roche's QMS reads it automatically. The demand forecast flows back bidirectionally — Roche SAP writes to Rosemary through the same AAS channel.</p>
+          <p><strong>Use it to:</strong> Press "Run AAS Demo" during the pitch. Let judges watch the data flow live. Point out: zero manual steps, bidirectional, ALCOA+ compliant.</p>
+        </div>
+      </div>
+
+      <div class="tab-card">
+        <div class="tab-card-header"><span class="tab-icon">📈</span><div><div class="tab-name">Forecast</div><div class="tab-purpose">Tab 3 — Business case</div></div></div>
+        <div class="tab-card-body">
+          <p>Live 18-month demand forecast chart for Basilmol DS. Shows actuals vs AI forecast vs Rosemary capacity plan. A supply gap (Apr–Jun 2026) is flagged 12 weeks in advance by the ML model — automatically triggering a procurement alert to Rosemary.</p>
+          <p><strong>Use it to:</strong> Answer "what's the business impact?" judges. The AI model refreshes on every new batch data point — no Excel email, no lag.</p>
+        </div>
+      </div>
+
+      <div class="tab-card">
+        <div class="tab-card-header"><span class="tab-icon">🔐</span><div><div class="tab-name">IAM &amp; Security</div><div class="tab-purpose">Tab 4 — Compliance &amp; access</div></div></div>
+        <div class="tab-card-body">
+          <p>Shows ABAC (Attribute-Based Access Control) per AAS Security Part 4. Five roles: Rosemary Operator, Rosemary QA, Roche Supply Chain, Roche QA, IT Admin. Each role sees only what they're allowed to — Rosemary cannot see Roche pricing, Roche cannot see Rosemary cost structure.</p>
+          <p><strong>Use it to:</strong> Answer "what about sensitive data and security?" Select each role and show the permission table changing.</p>
+        </div>
+      </div>
+
+      <div class="tab-card">
+        <div class="tab-card-header"><span class="tab-icon">🔗</span><div><div class="tab-name">Traceability</div><div class="tab-purpose">Tab 5 — Regulatory story</div></div></div>
+        <div class="tab-card-body">
+          <p>Full WHO-mandated supply chain traceability from API synthesis at Rosemary all the way to patient. Five linked AAS shells: API Shell → DS Batch Shell → Logistics Shell → Site Inventory Shell → Full Chain Query. Every step has WHO/EMA/ICH references.</p>
+          <p><strong>Use it to:</strong> Answer any regulatory question. "Any regulator query is answered by querying the AAS chain — every write has actor, timestamp, and hash."</p>
+        </div>
+      </div>
+
+      <div class="tab-card">
+        <div class="tab-card-header"><span class="tab-icon">👤</span><div><div class="tab-name">Who's This For</div><div class="tab-purpose">Tab 6 — Stakeholder adoption</div></div></div>
+        <div class="tab-card-body">
+          <p>Five personas: Executive, Supply Chain, QA/Regulatory, IT Engineer. Each persona sees different metrics and benefits tailored to their concerns. Before/after time comparisons for each role.</p>
+          <p><strong>Use it to:</strong> Show judges you've thought about adoption. Click each persona and read the "what changes in your daily work" section. Key point: supply planner's role <em>improves</em> — they supervise exceptions, not data entry.</p>
+        </div>
+      </div>
+
+      <div class="tab-card">
+        <div class="tab-card-header"><span class="tab-icon">✅</span><div><div class="tab-name">QA Review</div><div class="tab-purpose">Tab 7 — Quality deep dive</div></div></div>
+        <div class="tab-card-body">
+          <p>ALCOA+ mapping, full audit trail, roadmap, and technical architecture. Shows SHA-256 hash per submodel write, X.509-signed AASX packages, and the 4-quarter implementation plan.</p>
+          <p><strong>Use it to:</strong> Answer deep technical or compliance questions. Point to the ALCOA+ grid and the architecture summary at the bottom.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="section">
+    <span class="sec-anchor" id="s4"></span>
+    <div class="sec-header">
+      <div class="sec-num">4</div>
+      <div><div class="sec-title">Running the Live Demo tab</div><div class="sec-desc">Step by step — practice this before the pitch</div></div>
+    </div>
+    <div class="card">
+      <ul class="step-list">
+        <li class="step-item">
+          <div class="step-dot">1</div>
+          <div class="step-content"><div class="step-title">Open the portal, go to "Live Demo" tab</div><div class="step-detail">Both nodes (Rosemary MES and Roche Kaiseraugst) start in IDLE state.</div><span class="step-tag">Starting state</span></div>
+        </li>
+        <li class="step-item">
+          <div class="step-dot">2</div>
+          <div class="step-content"><div class="step-title">Press "Run AAS Demo"</div><div class="step-detail">Watch the animation: Rosemary becomes ACTIVE, a data packet travels right (DS CoA → Roche), then a packet returns left (Demand Forecast → Rosemary).</div><span class="step-tag blue">Bidirectional exchange</span></div>
+        </li>
+        <li class="step-item">
+          <div class="step-dot">3</div>
+          <div class="step-content"><div class="step-title">Watch the DS Batch Submodel populate live</div><div class="step-detail">Fields fill in real time: Batch ID, potency, yield, QC status, release date, chain-of-custody hash. This is what used to arrive as a PDF.</div><span class="step-tag green">ALCOA+ happening live</span></div>
+        </li>
+        <li class="step-item">
+          <div class="step-dot">4</div>
+          <div class="step-content"><div class="step-title">Point out the DP Batch Submodel linking</div><div class="step-detail">Below the DS batch data, the downstream DP Batch automatically links — showing the patient dose count and DP batch status. This is the Digital Product Passport in action.</div><span class="step-tag purple">Innovation point</span></div>
+        </li>
+        <li class="step-item">
+          <div class="step-dot">5</div>
+          <div class="step-content"><div class="step-title">Try LOT-006 — the failure scenario</div><div class="step-detail">Switch to LOT-2026-006. An OOS (Out of Spec) result immediately cascades to DP Batch BLOCKED. ~600 patient-months at risk surfaced instantly, not discovered 4 weeks later in manual reconciliation.</div><span class="step-tag amber">Patient impact moment</span></div>
+        </li>
+        <li class="step-item">
+          <div class="step-dot">6</div>
+          <div class="step-content"><div class="step-title">Press Reset to run again if needed</div><div class="step-detail">Use ↺ Reset to restart the demo cleanly for a second run.</div></div>
+        </li>
+      </ul>
+    </div>
+    <div class="card card-warn">
+      <div class="label label-amber">Practice tip</div>
+      <p style="font-size:12px;color:#854f0b;line-height:1.6;">Run the demo at least 3 times before the pitch. Narrate it as it animates — don't wait for it to finish. The animation is only ~30 seconds. Silence during animation looks like you don't know what's happening.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="section">
+    <span class="sec-anchor" id="s5"></span>
+    <div class="sec-header">
+      <div class="sec-num">5</div>
+      <div><div class="sec-title">Key numbers to remember</div><div class="sec-desc">Use these in Q&amp;A — don't make up others</div></div>
+    </div>
+    <div class="card">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div style="background:#fcebeb;border:1px solid #f7c1c1;border-radius:8px;padding:10px;text-align:center;">
+          <div style="font-size:11px;font-weight:700;color:#a32d2d;margin-bottom:6px;">BEFORE</div>
+          <div style="font-size:13px;color:#5f5e5a;line-height:2;">4–6 weeks batch cycle<br>±18% forecast error<br>3–5 manual handoffs<br>~96% data accuracy<br>&lt;2 min to get audit data → <em>weeks</em></div>
+        </div>
+        <div style="background:#eaf3de;border:1px solid #c0dd97;border-radius:8px;padding:10px;text-align:center;">
+          <div style="font-size:11px;font-weight:700;color:#3b6d11;margin-bottom:6px;">AFTER</div>
+          <div style="font-size:13px;color:#5f5e5a;line-height:2;">4× faster batch release<br>±4% forecast error<br>0 manual handoffs<br>99.7% data accuracy<br>&lt;2 min audit trail retrieval</div>
+        </div>
+      </div>
+      <div style="margin-top:10px;padding-top:10px;border-top:1px solid #f1efe8;">
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;text-align:center;">
+          <div><div style="font-size:16px;font-weight:800;color:#1a1a18;">€1.8M</div><div style="font-size:10px;color:#73726c;">Est. annual saving (Kaiseraugst)</div></div>
+          <div><div style="font-size:16px;font-weight:800;color:#1a1a18;">12 weeks</div><div style="font-size:10px;color:#73726c;">AI supply gap early warning</div></div>
+          <div><div style="font-size:16px;font-weight:800;color:#1a1a18;">90 days</div><div style="font-size:10px;color:#73726c;">Pilot to live</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="card card-info">
+      <div class="label label-blue">Important — say this if asked about numbers</div>
+      <p style="font-size:12px;color:#185fa5;line-height:1.6;">These are <strong>target metrics to validate in pilot</strong> — not claimed as proven results. Frame them as: "Our pilot will validate these targets, which are based on comparable AAS implementations in automotive and energy sectors."</p>
+    </div>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="section">
+    <span class="sec-anchor" id="s6"></span>
+    <div class="sec-header">
+      <div class="sec-num">6</div>
+      <div><div class="sec-title">Compliance &amp; ALCOA+</div><div class="sec-desc">Your winning differentiator — most teams won't go here</div></div>
+    </div>
+    <div class="alcoa-grid">
+      <div class="alcoa-item">
+        <div class="alcoa-letter">A</div>
+        <div class="alcoa-word">Attributable</div>
+        <div class="alcoa-how">Every AAS write records actor ID, system, and timestamp — who entered it and from which system.</div>
+      </div>
+      <div class="alcoa-item">
+        <div class="alcoa-letter">L</div>
+        <div class="alcoa-word">Legible</div>
+        <div class="alcoa-how">Machine-readable structured data — not handwriting on a PDF. Always readable, always parseable.</div>
+      </div>
+      <div class="alcoa-item">
+        <div class="alcoa-letter">C</div>
+        <div class="alcoa-word">Contemporaneous</div>
+        <div class="alcoa-how">Data written at the moment of the event by the source system — not re-entered hours or days later.</div>
+      </div>
+      <div class="alcoa-item">
+        <div class="alcoa-letter">O</div>
+        <div class="alcoa-word">Original</div>
+        <div class="alcoa-how">Rosemary MES writes directly to AAS — no transcription, no PDF intermediary. Born digital.</div>
+      </div>
+      <div class="alcoa-item">
+        <div class="alcoa-letter">A</div>
+        <div class="alcoa-word">Accurate</div>
+        <div class="alcoa-how">Machine-to-machine eliminates transcription error. SHA-256 hash detects any tampering.</div>
+      </div>
+      <div class="alcoa-item" style="grid-column:1/-1;background:#d4edda;">
+        <div class="alcoa-letter">+</div>
+        <div class="alcoa-word">Complete · Consistent · Enduring · Available</div>
+        <div class="alcoa-how">Full CoA per IDTA standard. Registry ensures discoverability. ABAC governs access. Immutable audit trail. Retrievable by any authorised regulator within seconds.</div>
+      </div>
+    </div>
+    <div class="pitch-block" style="margin-top:12px;">
+      <div class="pitch-label">Say this to judges</div>
+      <div class="pitch-text">"The AAS submodel is <strong>ALCOA+ by design</strong> — we're not adding compliance on top of our solution. It's built in. And it's <strong>stronger than a wet signature on a PDF</strong> — every AASX package is signed with an X.509 certificate, giving cryptographic non-repudiation that any EMA, Swissmedic, or WHO inspector can verify in seconds."</div>
+    </div>
+    <div class="card" style="margin-top:10px;">
+      <div class="label">Regulatory references in the simulation</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;">
+        <span style="font-size:11px;background:#e6f1fb;color:#185fa5;padding:3px 8px;border-radius:4px;font-weight:600;">EU GMP Annex 11</span>
+        <span style="font-size:11px;background:#e6f1fb;color:#185fa5;padding:3px 8px;border-radius:4px;font-weight:600;">WHO TRS 1044</span>
+        <span style="font-size:11px;background:#e6f1fb;color:#185fa5;padding:3px 8px;border-radius:4px;font-weight:600;">ICH Q10</span>
+        <span style="font-size:11px;background:#e6f1fb;color:#185fa5;padding:3px 8px;border-radius:4px;font-weight:600;">ICH Q12</span>
+        <span style="font-size:11px;background:#e6f1fb;color:#185fa5;padding:3px 8px;border-radius:4px;font-weight:600;">ICH Q7</span>
+        <span style="font-size:11px;background:#e6f1fb;color:#185fa5;padding:3px 8px;border-radius:4px;font-weight:600;">WHO GDP Guidelines</span>
+        <span style="font-size:11px;background:#eaf3de;color:#3b6d11;padding:3px 8px;border-radius:4px;font-weight:600;">AAS Security Part 4</span>
+        <span style="font-size:11px;background:#eaf3de;color:#3b6d11;padding:3px 8px;border-radius:4px;font-weight:600;">IDTA-02011 DS Batch submodel</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="section">
+    <span class="sec-anchor" id="s7"></span>
+    <div class="sec-header">
+      <div class="sec-num">7</div>
+      <div><div class="sec-title">Who has access to what</div><div class="sec-desc">IAM &amp; Security tab — ABAC model</div></div>
+    </div>
+    <table class="role-table">
+      <thead>
+        <tr><th>Role</th><th>Organisation</th><th>Batch CoA</th><th>Forecast</th><th>Pricing / IP</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Rosemary Operator</strong></td><td>CDMO · Mfg</td><td><span class="badge badge-write">Write</span></td><td><span class="badge badge-none">None</span></td><td><span class="badge badge-none">None</span></td></tr>
+        <tr><td><strong>Rosemary QA</strong></td><td>CDMO · Quality</td><td><span class="badge badge-read">Read</span></td><td><span class="badge badge-none">None</span></td><td><span class="badge badge-none">None</span></td></tr>
+        <tr><td><strong>Roche Supply Chain</strong></td><td>Kaiseraugst · Planning</td><td><span class="badge badge-read">Read</span></td><td><span class="badge badge-write">Write</span></td><td><span class="badge badge-none">None</span></td></tr>
+        <tr><td><strong>Roche QA</strong></td><td>Kaiseraugst · Quality</td><td><span class="badge badge-read">Read</span></td><td><span class="badge badge-read">Read</span></td><td><span class="badge badge-none">None</span></td></tr>
+        <tr><td><strong>IT Admin</strong></td><td>Roche IT · Security</td><td><span class="badge badge-admin">Admin</span></td><td><span class="badge badge-admin">Admin</span></td><td><span class="badge badge-admin">Admin</span></td></tr>
+      </tbody>
+    </table>
+    <div class="card card-success" style="margin-top:10px;">
+      <div class="label label-green">Key security features in the simulation</div>
+      <ul style="font-size:12px;color:#3b6d11;line-height:2;padding-left:16px;">
+        <li>ABAC policies: role + asset ID + submodel ID + operation → allow/deny</li>
+        <li>TLS 1.3 in transit · AES-256 at rest</li>
+        <li>X.509-signed AASX packages — tamper-evident, non-repudiable</li>
+        <li>SHA-256 hash per submodel write</li>
+        <li>Anomaly detection: unusual access triggers alert within 60 seconds</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SECTION 8 -->
+  <div class="section">
+    <span class="sec-anchor" id="s8"></span>
+    <div class="sec-header">
+      <div class="sec-num">8</div>
+      <div><div class="sec-title">Implementation roadmap</div><div class="sec-desc">4 quarters — shown in QA Review tab</div></div>
+    </div>
+    <div class="roadmap">
+      <div class="rq"><div class="rq-label">Q1</div><div class="rq-title">Data Completion</div><div class="rq-items">Historical DS batch migration · AAS registry setup · System config · Data validation</div></div>
+      <div class="rq"><div class="rq-label">Q2</div><div class="rq-title">Go-Live</div><div class="rq-items">Live MES-to-AAS API · CoA submodel live · Operator training · Parallel run validation</div></div>
+      <div class="rq"><div class="rq-label">Q3</div><div class="rq-title">ML Validation</div><div class="rq-items">Demand forecast model training · IQ/OQ/PQ per Annex 11 · Stakeholder UAT sign-off</div></div>
+      <div class="rq"><div class="rq-label">Q4</div><div class="rq-title">Full Automation</div><div class="rq-items">Automated demand prediction live · Capacity gap alerts active · Planner in supervisory role only</div></div>
+    </div>
+    <div class="card card-purple" style="margin-top:10px;">
+      <div class="label label-purple">Target outcome by Q4</div>
+      <p style="font-size:12px;color:#534ab7;line-height:1.6;">Supply Chain planner supervises the process only — no manual data entry, no email forecasts, no PDF reconciliation. Full Pharma 4.0 data flow operational.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 9 -->
+  <div class="section">
+    <span class="sec-anchor" id="s9"></span>
+    <div class="sec-header">
+      <div class="sec-num">9</div>
+      <div><div class="sec-title">Judge Q&amp;A answers</div><div class="sec-desc">Ready to use — no improvisation needed</div></div>
+    </div>
+    <div class="card">
+      <ul class="qa-list">
+        <li class="qa-item">
+          <div class="qa-q">Why AAS and not just a shared database or point-to-point API?</div>
+          <div class="qa-a">A database forces both sides onto one system — rip-and-replace. A custom API is one integration that breaks when either side changes. AAS standardizes the data contract at the boundary. Rosemary keeps its MES, Roche keeps its QMS, they speak AAS at the handoff. New suppliers plug in with zero rework.</div>
+        </li>
+        <li class="qa-item">
+          <div class="qa-q">What if a small supplier doesn't have IT infrastructure for an API?</div>
+          <div class="qa-a">AAS supports file-based exchange — AASX packages. A small lab generates a signed AASX file and sends it. We receive and parse it automatically. Same data model, zero custom integration. The benefit holds even without a live API connection.</div>
+        </li>
+        <li class="qa-item">
+          <div class="qa-q">How do you protect sensitive data — Rosemary can't see Roche's pricing?</div>
+          <div class="qa-a">ABAC — Attribute-Based Access Control per AAS Security Part 4. Policies are scoped at submodel property level: role + asset ID + operation → allow or deny. Rosemary operators can only write to their own batch IDs. They cannot access Roche formulation data or pricing. Show the IAM tab — it's live in the simulation.</div>
+        </li>
+        <li class="qa-item">
+          <div class="qa-q">How does this maintain data integrity — better than a signed PDF?</div>
+          <div class="qa-a">Cryptographically stronger. Every AASX package is signed with an X.509 certificate — tamper-evident and non-repudiable. SHA-256 hash per submodel write means any modification is detectable. A wet signature on a PDF can be forged. This cannot.</div>
+        </li>
+        <li class="qa-item">
+          <div class="qa-q">Is AAS mature enough for pharma production use?</div>
+          <div class="qa-a">Yes. Catena-X runs AAS registry profiles in a live automotive production ecosystem today. The Digital Battery Passport uses AAS for EU regulatory compliance. IDTA and open-source runtimes like Eclipse BaSyx are production-grade. The standard is stable at IEC 63278-1.</div>
+        </li>
+        <li class="qa-item">
+          <div class="qa-q">How do you get Rosemary to adopt this?</div>
+          <div class="qa-a">Their workload drops — no more generating PDFs, no more re-sending Excel files, no more chasing email confirmations. They get real-time demand signal from Roche SAP automatically. The adoption argument sells itself. We start with one batch type in pilot — low risk, high visibility.</div>
+        </li>
+        <li class="qa-item">
+          <div class="qa-q">How do regulators benefit?</div>
+          <div class="qa-a">Any EMA, Swissmedic, or WHO inspector queries the AAS chain — full traceability from API synthesis to patient, every write with actor, timestamp, and hash. Retrievable in seconds instead of days of manual document assembly. We show this in the Traceability tab.</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SECTION 10 -->
+  <div class="section">
+    <span class="sec-anchor" id="s10"></span>
+    <div class="sec-header">
+      <div class="sec-num">10</div>
+      <div><div class="sec-title">Pitch scripts</div><div class="sec-desc">Memorise the 30-second version. Know the 2-minute version.</div></div>
+    </div>
+
+    <div class="pitch-block">
+      <div class="pitch-label">30-second pitch</div>
+      <div class="pitch-text">
+        "Basilmol DS moves from Rosemary to Kaiseraugst — but the <strong>data doesn't</strong>. It gets trapped in PDF CoAs, re-keyed into QMS, and forecasts arrive via email 1–2 weeks late. That's ±18% forecast error and 4–6 weeks of cycle time on every batch. Our solution: replace the paper barrier with a single open standard — the <strong>Asset Administration Shell</strong>. Rosemary's MES writes directly to an AAS submodel. Roche's QMS reads it automatically. Bidirectional. ALCOA+ compliant. Zero manual steps. <strong>This simulation runs it live — right now.</strong>"
+      </div>
+    </div>
+
+    <div class="pitch-block" style="margin-top:10px;">
+      <div class="pitch-label">2-minute pitch</div>
+      <div class="pitch-text">
+        "Pharma supply chains depend on batch data arriving accurately and on time. Today, Rosemary completes a Basilmol DS batch — with all data digital in their MES — and then sends it to Roche as a PDF. A Roche QA employee reads it, compares serial numbers, and types it into the QMS. Meanwhile, Kaiseraugst sends a monthly demand forecast via email. Rosemary plans production on data that's already 1–2 weeks stale. The result: 4–6 weeks of batch cycle time, ±18% forecast error, and 3–5 manual handoffs per batch. For a first-in-class molecule, this directly delays patient access.<br><br>
+        Our solution uses the <strong>Asset Administration Shell</strong> — an IEC/IDTA open standard — to eliminate this entirely. Each Basilmol DS batch gets an AAS shell with two submodels: a Batch CoA submodel and a Demand Forecast submodel. Rosemary's MES writes the CoA directly via REST API at the moment of release. Roche's QMS polls the AAS Registry and reads it automatically. And critically — it's bidirectional: Roche SAP writes the demand forecast back to Rosemary through the same AAS channel in real time.<br><br>
+        This is <strong>ALCOA+ by design</strong> — not bolted on. The data is contemporaneous, original, attributable, and cryptographically signed with X.509. Any EMA or WHO inspector queries the full chain in seconds.<br><br>
+        Our pilot runs in 90 days: one batch type, one supplier, prove the model. By Q4 the supply chain planner supervises exceptions — they don't enter data. And because AAS is a universal open standard, every future CDMO plugs in with zero rework."
+      </div>
+    </div>
+
+    <div class="card card-success" style="margin-top:10px;">
+      <div class="label label-green">Closing one-liner</div>
+      <p style="font-size:13px;color:#3b6d11;font-weight:600;line-height:1.6;">"This isn't a prototype of what AAS could do — it's a functional simulation of what it does do, running live in your hands right now."</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="footer">ISPE 2026 · Roche Track · Kaiseraugst · AAS_portal_v5 · Team Manual</div>
+
+</div>
+</body>
+</html>
